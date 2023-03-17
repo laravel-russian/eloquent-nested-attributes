@@ -1,28 +1,28 @@
 {
-    "name": "mits87/eloquent-nested-attributes",
+    "name": "laravel-russian/eloquent-nested-attributes",
     "type": "library",
     "description": "Nested attributes allow you to save attributes on associated records through the parent. By default nested attribute updating is turned off and you can enable it using the $nested attribute. When you enable nested attributes an attribute writer is defined on the model.",
     "keywords": [
         "Laravel", "Lumen", "Eloquent", "Nested Attributes"
     ],
-    "version": "0.0.7",
+    "version": "1.0.1",
     "homepage": "https://github.com/mits87/eloquent-nested-attributes",
     "license": "MIT",
     "authors": [
         {
-            "name": "Piotr Krajewski",
-            "email": "mits87@gmail.com"
+            "name": "Mike",
+            "email": "mltefive@gmail.com"
         }
     ],
     "require": {
         "php": ">=7.2",
-        "illuminate/database": "^9.0",
-        "illuminate/support": "^9.0"
+        "illuminate/database": ">=9.0",
+        "illuminate/support": ">=9.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.5",
-        "matt-allan/laravel-code-style": "^0.5.0",
-        "mockery/mockery": "^1.3"
+        "phpunit/phpunit": ">=8.5",
+        "matt-allan/laravel-code-style": ">=0.5.0",
+        "mockery/mockery": ">=1.3"
     },
     "autoload": {
         "psr-4": {
