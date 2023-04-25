@@ -46,7 +46,7 @@ trait HasNestedAttributesTrait
      */
     public function fill(array $attributes): self
     {
-        if (! empty($this->nested)) {
+        if (!empty($this->nested)) {
             $this->acceptNestedAttributesFor = [];
 
             foreach ($this->nested as $attr) {
@@ -70,26 +70,26 @@ trait HasNestedAttributesTrait
     {
         DB::beginTransaction();
 
-        if (! parent::save($options)) {
+        if (!parent::save($options)) {
             return false;
         }
 
         foreach ($this->getAcceptNestedAttributesFor() as $attribute => $stack) {
             $methodName = lcfirst(implode(array_map('ucfirst', explode('_', $attribute))));
 
-            if (! method_exists($this, $methodName)) {
+            if (!method_exists($this, $methodName)) {
                 throw new Exception('The nested atribute relation "' . $methodName . '" does not exists.');
             }
 
             $relation = $this->$methodName();
 
             if ($relation instanceof HasOne || $relation instanceof MorphOne) {
-                if (! $this->saveNestedAttributes($relation, $stack)) {
+                if (!$this->saveNestedAttributes($relation, $stack)) {
                     return false;
                 }
             } elseif ($relation instanceof HasMany || $relation instanceof MorphMany) {
                 foreach ($stack as $params) {
-                    if (! $this->saveManyNestedAttributes($this->$methodName(), $params)) {
+                    if (!$this->saveManyNestedAttributes($this->$methodName(), $params)) {
                         return false;
                     }
                 }
@@ -117,8 +117,8 @@ trait HasNestedAttributesTrait
                 return $model->delete();
             }
 
-            return $model->update($stack);
-        } elseif ($relation->create($stack)) {
+            return $model->update($params);
+        } elseif ($relation->create($params)) {
             return true;
         }
 
